@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import styles from "./NewPost.module.css";
+import Modal from "../components/Modal";
 
 const NewPost = ({ onCancel, onAddPost }) => {
   const [enteredBody, setEnteredBody] = useState("");
@@ -24,22 +25,24 @@ const NewPost = ({ onCancel, onAddPost }) => {
     onCancel();
   };
   return (
-    <form className={styles.form} onSubmit={submitHandler}>
-      <p>
-        <label htmlFor="body">Text</label>
-        <textarea id="body" required rows={3} onChange={bodyChangeHandler} />
-      </p>
-      <p>
-        <label htmlFor="name">Your Name</label>
-        <input type="text" id="name" onChange={nameChangeHandler} />
-      </p>
-      <p className={styles.actions}>
-        <button type="button" onClick={onCancel}>
-          Cancel
-        </button>
-        <button>Post</button>
-      </p>
-    </form>
+    <Modal>
+      <form className={styles.form} onSubmit={submitHandler}>
+        <p>
+          <label htmlFor="body">Text</label>
+          <textarea id="body" required rows={3} onChange={bodyChangeHandler} />
+        </p>
+        <p>
+          <label htmlFor="name">Your Name</label>
+          <input type="text" id="name" onChange={nameChangeHandler} />
+        </p>
+        <p className={styles.actions}>
+          <button type="button" onClick={onCancel}>
+            Cancel
+          </button>
+          <button>Post</button>
+        </p>
+      </form>
+    </Modal>
   );
 };
 
