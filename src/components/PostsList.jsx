@@ -11,7 +11,12 @@ const PostsList = () => {
       {posts.length > 0 && (
         <ul className={styles.posts}>
           {posts.map((post) => (
-            <Post key={Math.random()} author={post.author} body={post.body} />
+            <Post
+              key={post.id}
+              id={post.id}
+              author={post.author}
+              body={post.body}
+            />
           ))}
         </ul>
       )}
